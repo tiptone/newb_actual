@@ -31,13 +31,13 @@ def do_something(sc):
       print "Modulo 5"
       print "Most recent: " , user.screen_name
       print "Follower Count: " , bat.followers_count
-      api.update_status("@mzbat the follower count is ".format(bat.followers_count))
+      api.update_status('@mzbat Just followed by %s and the follower count is %s' % (user.screen_name,bat.followers_count))
       last_count = bat.followers_count
     elif (bat.followers_count == 200000) :
       print "20K"
       print "Most recent: " , user.screen_name
       print "Follower Count: " , bat.followers_count
-      api.update_status("@mzbat the 20K follower is ".format(mzbat.screen_name))
+      api.update_status("@mzbat the 20K follower is %s" % user.screen_name)
       last_count = bat.followers_count
     elif (bat.followers_count > last_count):
       print "Gained a follower: " , user.screen_name
