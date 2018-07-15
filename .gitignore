@@ -101,3 +101,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+skeefooza/bin/
+skeefooza/include/
+skeefooza/pip-selfcheck.json
+skeefooza/share/
+
