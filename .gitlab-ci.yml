@@ -1,14 +1,7 @@
-# put in root dir as hidden file .gitlab-ci.yml
-cache:
-  key: "$CI_BUILD_REF_NAME node:8-alpine"
-  paths:
-  - skeefooza/
+stages: 
+  - build
 
-build:
+job 1:    
   stage: build
-  image: node:8-alpine
-  variables:
-    NODE_ENV: "development"
-  before_script:
-    - apk add --update bash
-    - apk add --update git && rm -rf /tmp/* /var/cache/apk/*
+  script: 
+    - skeefooza/build_all.sh
