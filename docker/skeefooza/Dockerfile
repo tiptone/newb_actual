@@ -1,6 +1,15 @@
+##################################
+# docker pull debian
+# docker run debian
+# docker build -t "bot_test" .
+# docker run -it --rm bot_test
+##################################
 FROM debian:latest
 #FROM tensorflow/tensorflow:latest
-
+ENV container skeefooza
+ENV HOME /home/franklin
+RUN (groupadd engr && useradd -d $HOME -ms /bin/bash -g engr franklin)
+ENV WS $HOME/workspace
 
 RUN apt-get update && apt-get install -y \
     git \
