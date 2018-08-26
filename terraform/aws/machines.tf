@@ -19,7 +19,7 @@ resource "aws_instance" "franklin-iac" {
   }
 
   provisioner "file" {
-    source      = "conf/setup_the_goodies.sh"
+    source      = "conf/setup.sh"
     destination = "/home/admin/setup.sh"
   }
 
@@ -28,10 +28,10 @@ resource "aws_instance" "franklin-iac" {
     destination = "/home/admin/credentials.py"
   }
 
-  provisioner "file" {
-    source      = "conf/bot.py"
-    destination = "/home/admin/bot.py"
-  }
+  #provisioner "file" {
+  #  source      = "conf/bot.py"
+  #  destination = "/home/admin/bot.py"
+  #}
 
   provisioner "remote-exec" {
     inline = [
