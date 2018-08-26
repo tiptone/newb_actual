@@ -22,7 +22,7 @@ def one_hot_encode_object_array(arr):
   return np_utils.to_categorical(ids, len(uniques))
 
 try: 
-
+  # load iris data from seaborne built in data set
   iris = sns.load_dataset("iris")
   iris.head()
   sns.pairplot(iris, hue='species');
