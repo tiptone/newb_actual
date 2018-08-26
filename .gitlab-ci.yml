@@ -2,6 +2,6 @@ deploy:
   image: python:latest
   stage: build
   script: 
-    - pip install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
-    - python -c "import tensorflow as tf; print(tf.__version__)"
-    - python /builds/FrankTheTank/newb_actual/skeefooza/hello_world.py
+    - pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
+    - python3 -c "import tensorflow as tf; print(tf.__version__)"
+    - python3 /builds/FrankTheTank/newb_actual/skeefooza/hello_world.py
