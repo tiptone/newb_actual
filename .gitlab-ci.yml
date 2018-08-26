@@ -2,6 +2,11 @@ deploy:
   image: python:latest
   stage: build
   script: 
-    - pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
+  #- pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
+    - pip3 install seaborn
+    - pip3 install numpy
+    - pip3 install sklearn
+    - pip3 install keras
+    - pip3 install tensorflow
     - python3 -c "import tensorflow as tf; print(tf.__version__)"
     - python3 /builds/FrankTheTank/newb_actual/skeefooza/hello_world.py
