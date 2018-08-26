@@ -1,6 +1,11 @@
 deploy:
   image: python:3.5
   stage: build
+  before_script:
+    - apt-get update -yqqq
+    - apt-get install -yqq xvfb
+    - Xvfb :99 -screen 0 1280x720x24 -ac &
+    - export DISPLAY=:99
   script: 
   #- pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
     - pip3 install seaborn
