@@ -5,6 +5,16 @@ __pycache__/
 
 credentials.py
 
+# Compiled files
+*.tfstate
+*.tfstate.backup
+# Module directory
+.terraform/
+# This has some private key info
+terraform/aws/terraform.tfvars
+.terraform.tfstate.lock.info
+*.log
+
 # C extensions
 *.so
 
@@ -101,3 +111,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+skeefooza/bin/
+skeefooza/include/
+skeefooza/pip-selfcheck.json
+skeefooza/share/
+
