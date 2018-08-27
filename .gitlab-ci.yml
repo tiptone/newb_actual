@@ -35,22 +35,24 @@ app_test:
     #- python -m unittest discover -s "./tests/"
 
 staging:
+  stage: staging
   type: deploy 
   script: 
     - apt-get update -yq
     - apt-get install ruby-dev -y 
     - gem install dpl
-    - dpl --provider=heroku --api-key=$HEROKU_STAGING_API_KEY
+    - dpl --provider=heroku --api-key=$HEROKU_API_KEY
   only:
     - staging
 
 production:
+  stage: production
   type: deploy
   script:
     - apt-get update -qy
     - apt-get install ruby-dev -y  
     - gem install dpl
-    - dpl --provider=heroku --api-key=$HEROKU_PRODUCTION_API_KEY
+    - dpl --provider=heroku --api-key=$HEROKU_API_KEY
    when: manual
    only:
     - master
