@@ -46,7 +46,7 @@ staging:
     - staging
 
 production:
-  stage: production
+  stage: deployment
   type: deploy
   script:
     - apt-get update -qy
