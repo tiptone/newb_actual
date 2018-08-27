@@ -1,8 +1,7 @@
 resource "aws_instance" "franklin-iac" {
   connection {
-    user        = "centos"
+    user        = "admin"
     timeout     = "1m"
-    #agent       = false
     private_key = "${file("/home/thedevilsvoice/.ssh/do_terra_rsa")}"
   }
   #ami           = "ami-d2c924b2"
@@ -36,7 +35,7 @@ resource "aws_instance" "franklin-iac" {
   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
-      "sudo apt-get updatei && sudo apt-get upgrade -y",
+      "sudo apt-get update && sudo apt-get upgrade -y",
       "sudo bash /home/admin/setup.sh",
     ]
   }

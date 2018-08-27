@@ -6,6 +6,8 @@ before_script:
 stages:
   - ml_test
   - app_test
+  - staging
+  - deployment
 
 ml_test:
   stage: ml_test
@@ -31,3 +33,24 @@ app_test:
   script:
     - echo "Running tests"
       #- python -m unittest discover -s "./tests/"
+
+staging :
+  type : deploy 
+  script : 
+    - apt-get update -yqqq
+    - apt-get install ruby-dev -y 
+    - gem install dpl
+    - dpl --provider=heroku --app=newb_actual --api-key=$HEROKU_STAGING_API_KEY
+  only:
+    - staging
+
+production :
+  type : deploy
+  script :
+    - apt-get update -qy
+    - apt-get install ruby-dev -y  
+    - gem install dpl
+    - dpl --provider=heroku --app=newb_actual --api-key=$HEROKU_PRODUCTION_API_KEY
+   when: manual
+   only:
+    - master
