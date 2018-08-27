@@ -1,4 +1,7 @@
-#
+# 10k bot
+
+This is a twitter bot written to track followers of @mzbat account
+so we'd know when the count reached 10k. 
 
 1. Go to apps.twitter.com
 2. Create new app

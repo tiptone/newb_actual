@@ -5,6 +5,7 @@
 # Import our Twitter credentials from credentials.py
 from credentials import *
 
+# this is our bot class and methods
 from twitter_bot import TwitterBot
 
 import tweepy 
@@ -12,6 +13,7 @@ import sched, time
 import random
 import logging
 
+# Doing some logging to a file
 logging.basicConfig(filename="/tmp/followers.log", level=logging.INFO,
                 format='%(asctime)s %(message)s') # include timestamp
 logger = logging.getLogger(__name__)

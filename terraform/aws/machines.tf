@@ -1,8 +1,7 @@
 resource "aws_instance" "franklin-iac" {
   connection {
-    user        = "centos"
+    user        = "admin"
     timeout     = "1m"
-    #agent       = false
     private_key = "${file("/home/thedevilsvoice/.ssh/do_terra_rsa")}"
   }
   #ami           = "ami-d2c924b2"
@@ -19,7 +18,7 @@ resource "aws_instance" "franklin-iac" {
   }
 
   provisioner "file" {
-    source      = "conf/setup_the_goodies.sh"
+    source      = "conf/setup.sh"
     destination = "/home/admin/setup.sh"
   }
 
@@ -28,15 +27,15 @@ resource "aws_instance" "franklin-iac" {
     destination = "/home/admin/credentials.py"
   }
 
-  provisioner "file" {
-    source      = "conf/bot.py"
-    destination = "/home/admin/bot.py"
-  }
+  #provisioner "file" {
+  #  source      = "conf/bot.py"
+  #  destination = "/home/admin/bot.py"
+  #}
 
   provisioner "remote-exec" {
     inline = [
       "export PATH=$PATH:/usr/bin",
-      "sudo apt-get updatei && sudo apt-get upgrade -y",
+      "sudo apt-get update && sudo apt-get upgrade -y",
       "sudo bash /home/admin/setup.sh",
     ]
   }

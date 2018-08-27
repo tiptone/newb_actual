@@ -1,0 +1,58 @@
+image: python:3.5
+
+before_script:
+  - python -V # Print out python version for debugging
+
+stages:
+  - ml_test
+  - app_test
+  - staging
+  - deployment
+
+ml_test:
+  stage: ml_test
+  before_script:
+    - apt-get update -yqqq
+    - apt-get install -yqq apt-utils 
+    - apt-get install -yqq xvfb
+    - Xvfb :99 -screen 0 1280x720x24 -ac &
+    - export DISPLAY=:99
+  script: 
+    #- pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
+    - echo ""
+    - pip3 install seaborn
+    - pip3 install numpy
+    - pip3 install sklearn
+    - pip3 install keras
+    - pip3 install --upgrade tensorflow
+    - python3 -c "import tensorflow as tf; print(tf.__version__)"
+    - python3 /builds/FrankTheTank/newb_actual/skeefooza/hello_world.py
+
+app_test:
+  stage: app_test 
+  script:
+    - echo "Running tests"
+    #- python -m unittest discover -s "./tests/"
+
+staging:
+  stage: staging
+  type: deploy 
+  script: 
+    - apt-get update -yq
+    - apt-get install ruby-dev -y 
+    - gem install dpl
+    - dpl --provider=heroku --api-key=$HEROKU_API_KEY
+  only:
+    - staging
+
+production:
+  stage: deployment
+  type: deploy
+  script:
+    - apt-get update -qy
+    - apt-get install ruby-dev -y  
+    - gem install dpl
+    - dpl --provider=heroku --api-key=$HEROKU_API_KEY
+  when: manual
+  only:
+    - master
