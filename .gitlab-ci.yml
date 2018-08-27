@@ -18,7 +18,7 @@ ml_test:
     - Xvfb :99 -screen 0 1280x720x24 -ac &
     - export DISPLAY=:99
   script: 
-  #- pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
+    #- pip3 install -U -r /builds/FrankTheTank/newb_actual/skeefooza/requirements.txt
     - echo ""
     - pip3 install seaborn
     - pip3 install numpy
@@ -53,6 +53,6 @@ production:
     - apt-get install ruby-dev -y  
     - gem install dpl
     - dpl --provider=heroku --api-key=$HEROKU_API_KEY
-   when: manual
-   only:
+  when: manual
+  only:
     - master
