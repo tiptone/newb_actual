@@ -1,7 +1,6 @@
 language: python
 python: 
   - "3.5"
-install:
+script:
   - pip install -r skeefooza/requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
-script: pytest
