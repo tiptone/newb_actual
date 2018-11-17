@@ -6,6 +6,12 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 script:
+  - pip install nose pylint
+  - nosetests && pylint --error-only
   - pip install -r skeefooza/requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
   - python skeefooza/hello_world.py
+notifications:
+  email:
+    on_success: change
+    on_failure: change
