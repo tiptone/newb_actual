@@ -4,3 +4,4 @@ python:
 script:
   - pip install -r skeefooza/requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
+  - python skeefooza/hello_world.py
