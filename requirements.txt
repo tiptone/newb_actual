@@ -1,0 +1,11 @@
+# ml_bot
+seaborn
+numpy
+sklearn
+keras
+tensorflow
+# slack_bot
+slackclient
+flask
+# twitter_bot
+tweepy==3.6.0

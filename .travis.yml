@@ -8,9 +8,10 @@ before_script:
 script:
   - pip install nose pylint
   - nosetests && pylint --error-only
-  - pip install -r skeefooza/requirements.txt
+  - pip install -r requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
   - python skeefooza/hello_world.py
+  - python slack_bot/russ-bot.py
 notifications:
   email:
     on_success: change
