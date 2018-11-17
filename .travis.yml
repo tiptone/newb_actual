@@ -10,7 +10,7 @@ script:
   - nosetests && pylint --error-only
   - pip install -r requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
-  - python skeefooza/hello_world.py
+  - python ml_bot/hello_world.py
   - python slack_bot/russ-bot.py
 notifications:
   email:
