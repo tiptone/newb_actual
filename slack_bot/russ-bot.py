@@ -1,9 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
+
 from slackclient import SlackClient
 import json
+
 # Import our credentials from credentials.py
+import sys
+sys.path.append('../')
 from credentials import *
 
 def test_slack(sc):
@@ -54,11 +58,12 @@ def display_users(sc,users):
   # display active users
   for i in users['members']:
     #don't display slackbot
-    if i['profile']['real_name'] != 'slackbot':
+    #if i['profile']['real_name'] != 'russ-bot':
       # don't display deleted users
-      if not i['deleted']:
-        # display real name
-        print (i['profile']['real_name'])
+    if not i['deleted']:
+      # display real name
+      print (i)
+      print (i['profile']['real_name'])
 
 def main():
   channel = "random"
@@ -66,6 +71,7 @@ def main():
   username = "russ-bot"
   icon_url = ""
   sc = SlackClient(EC_TOKEN)
+
   # test slack
   test_slack(sc)
   #print sc.api_call('api.test')
@@ -77,10 +83,11 @@ def main():
   # display channels
   display_channels(channels)
   # post message
-  post_message(sc,"Wearing my yellow crocs today.",channel,icon_url,username)
+  #post_message(sc,"Wearing my yellow crocs today.",channel,icon_url,username)
   # get users
   users = get_users(sc)
   # display users
   display_users(sc,users)
 
-main()
+if __name__ == '__main__':
+  main()
