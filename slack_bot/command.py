@@ -22,7 +22,7 @@ class Command(object):
   def cookbook(self):
     return "https://github.com/DEAD10C5/1337-Noms-The-Hacker-Cookbook"
   def github(self):
-    return "https://github.com/theDevilsVoice/newb_actual"
+    return "https://github.com/theDevilsVoice/newb_actual/tree/master/slack_bot"
 
   def when(self):
     delta = datetime.datetime(2019, 4, 26) - datetime.datetime.now()

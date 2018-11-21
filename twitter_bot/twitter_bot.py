@@ -115,7 +115,7 @@ def list_followers(self):
 
   @staticmethod
   def error_handling(e):
-    error = type(e)
+      error = type(e)
       if error == tweepy.RateLimitError:
         print("You've hit a limit! Sleeping for 30 minutes.")
         sleep(60 * 30)

@@ -13,7 +13,8 @@ script:
   - pip install -r requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
   - python ml_bot/hello_world.py
-  - python slack_bot/russ-bot.py
+  # this won't run without credentials
+  #- python slack_bot/russ-bot.py
 notifications:
   email:
     on_success: change
