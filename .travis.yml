@@ -1,11 +1,20 @@
 language: python
 python: 
   - "2.7"
+cache: false
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 script:
-  - pip install -r skeefooza/requirements.txt
+  - pip install nose pylint
+  #- nosetests && pylint --error-only
+  - pylint --error-only
+  - pip install -r requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
-  - python skeefooza/hello_world.py
+  - python ml_bot/hello_world.py
+  - python slack_bot/russ-bot.py
+notifications:
+  email:
+    on_success: change
+    on_failure: change

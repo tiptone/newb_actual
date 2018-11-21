@@ -56,16 +56,14 @@ class TwitterBot(object):
       logging.info("Last count: {}".format(last_count)) 
       s.enter(60, 1, do_something, (sc,))
       for user in tweepy.Cursor(api.followers, screen_name="mzbat").items():
-        if (bat.followers_count % 5 == 0 ) and (last_count != bat.followers_cou
-    nt):
+        if (bat.followers_count % 5 == 0 ) and (last_count != bat.followers_count):
           print "Most recent: " , user.screen_name
           logging.info("Most recent: {}".format(user.screen_name))
           print "Follower Count: " , bat.followers_count
           logging.info("Follower Count: {}".format(bat.followers_count))
           print "Modulo 5"
           logging.info("Modulo 5")
-          api.update_status('@mzbat Just followed by %s and the follower count 
-    is %s' % (user.screen_name,bat.followers_count))
+          api.update_status('@mzbat Just followed by %s and the follower count is %s' % (user.screen_name,bat.followers_count))
           last_count = bat.followers_count
         elif (bat.followers_count == 200000) :
           print "Most recent: " , user.screen_name
