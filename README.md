@@ -1,3 +1,7 @@
+# Newb Actual
+
+[![Build Status](https://travis-ci.org/theDevilsVoice/newb_actual.svg?branch=master)](https://travis-ci.org/theDevilsVoice/newb_actual)
+
 ```
 sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) \
 -o /usr/local/bin/docker-compose

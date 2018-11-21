@@ -7,5 +7,6 @@ tensorflow
 # slack_bot
 slackclient
 flask
+weather-api
 # twitter_bot
 tweepy==3.6.0

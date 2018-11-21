@@ -7,13 +7,13 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
 script:
-  - pip install nose pylint
+  #- pip install nose pylint
   #- nosetests && pylint --error-only
-  - pylint --error-only
   - pip install -r requirements.txt
   - python -c "import tensorflow as tf; print(tf.__version__)"
   - python ml_bot/hello_world.py
-  - python slack_bot/russ-bot.py
+  # this won't run without credentials
+  #- python slack_bot/russ-bot.py
 notifications:
   email:
     on_success: change
