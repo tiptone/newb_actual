@@ -1,20 +1,18 @@
 language: python
-python: 
-  - "2.7"
+python:
+- '2.7'
 cache: false
 before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
+- export DISPLAY=:99.0
+- sh -e /etc/init.d/xvfb start
+- sleep 3
 script:
-  #- pip install nose pylint
-  #- nosetests && pylint --error-only
-  - pip install -r requirements.txt
-  - python -c "import tensorflow as tf; print(tf.__version__)"
-  - python ml_bot/hello_world.py
-  # this won't run without credentials
-  #- python slack_bot/russ-bot.py
+- pip install -r requirements.txt
+- python -c "import tensorflow as tf; print(tf.__version__)"
+- python ml_bot/hello_world.py
 notifications:
   email:
     on_success: change
     on_failure: change
+  slack:
+    secure: EdmTBBgE7UYP6NDRqjgtrwFORHs7Kh4H8qwCMEU8hH/jYqj79h2h9wESWLiInvPVtFRkmT8g8OYDvpFtarnyiCoVZE0iqTwhjLqgP/SNk9VNq/gUJlndEflQ9WVxZqTVKTzwjQ5Ck5YrCcT/a37FMPHLDTL1OqeJcYha9d9WFF/iz8LQrUqWlBcIdzCuiT8GgjaQVu5ejMb7RKYwanhmapW1AAVuRvLB4zLEKGbgKypsyx2Pzx2ahf1l3VZaew4gxMe5Q98GWZ6aHhUyrVNmNKf63EsZZLswLB4hRzUPY2gq1AigijY8n9rjcKkeljXZ3uRGwdCfYLAWZo1lYy1l38GIYKjewCOd1zFmgfMMb/8pw0eqmGL+jrNTIMP0XkbsidzXsHN0yZ/gWQklJFUNUIce5j+lRDqKv6oxobaTzqEHWHM7GrHyk3s/5r8X6Cr+hklEFdicozQqUqAcjVmlZBuBzsdb7RW6rh5mgYD4v7p72x/DkxnDaGvrov6Z/gclL+uHxee49GbtOqI3hF+95PeLA9jMX1WRvNoBkdwXblK98JOFQIWGYya8Q8bV6LvptzZ1NMN2oxsQtbeDA6N67dOigMrAQhhIc23icPnYPoItp+f78gxafTz7IqZDE4dKKcWcySWvakpJ21mhxD+vYSWx2nCbwiETLnnNtcQpkDs=
