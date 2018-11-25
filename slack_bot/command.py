@@ -5,6 +5,7 @@ import tweepy
 import sys
 sys.path.append('../')
 from credentials import *
+import requests
 
 # set up twitter interface
 global api
@@ -24,7 +25,8 @@ class Command(object):
       "tweet" : self.tweet,
       "unfollow" : self.unfollow, 
       "weather" : self.weather,
-      "when" : self.when
+      "when" : self.when,
+      "catfact": self.catfact
     }
  
   def handle_command(self, user, command):
@@ -101,3 +103,15 @@ class Command(object):
       print e
       return "Failure"
     return "Success"
+
+  def catfact(self):
+    url = 'https://catfact.ninja/fact'
+    headers = {
+      'Accept': 'application/json',
+    }
+    
+    r = requests.get(url, headers=headers)
+    if r.status_code == 200:
+      return '{}'.format(r.json()['fact'])
+    else:
+      return "Cat Fact not found ({})".format(r.status_code)
